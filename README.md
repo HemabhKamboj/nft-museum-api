@@ -3,7 +3,7 @@ APIs serving nft museum app. Powered by Flask. Link to frontend repo: https://gi
 
 
 ## Setup
-1. Run the [following](DB Initialization commands) commands in your SQL Database
+1. Run the DB Initialization commands in your SQL Database
 2. For local setup better to use Pycharm as IDE because even when creating virtual environment, flask run out of virtual environment.
 3. After setting project up in Pycharm, open terminal within Pycharm and run `pip install -r requirements.txt`
 4. Run `export DB_URI=<DB_URI>` or enter `DB_URI` in `config.py`
