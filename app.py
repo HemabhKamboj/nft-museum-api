@@ -23,6 +23,7 @@ def create_user():
     parameters = request.json
     user_name = parameters.get('user_name')
     valora_id = parameters.get('valora_id')
+    valora_id = valora_id.lower()
     try:
         db.execute("INSERT INTO users (name, valora_id, created_at) VALUES (:name, :valora_id, :created_at)",
                    {"name": user_name,
