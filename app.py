@@ -1,6 +1,7 @@
 import sys
 import logging
 from flask import Flask, request, make_response
+from flask_cors import CORS, cross_origin
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from config import DB_URI
