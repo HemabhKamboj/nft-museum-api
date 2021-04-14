@@ -1,12 +1,15 @@
 import sys
 import logging
 from flask import Flask, request, make_response
+from flask_cors import CORS, cross_origin
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from config import DB_URI
 
 app = Flask(__name__)
+cors = CORS(app)
 app.config['DEBUG'] = True
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 engine = create_engine(DB_URI)
 db = scoped_session(sessionmaker(bind=engine))
@@ -19,6 +22,7 @@ logger.addHandler(logHandler)
 
 
 @app.route("/user/create", methods=["POST"])
+@cross_origin()
 def create_user():
     parameters = request.json
     user_name = parameters.get('user_name')
@@ -42,6 +46,7 @@ def create_user():
 
 
 @app.route("/user/", methods=["GET"], endpoint='user')
+@cross_origin()
 def get_user():
     valora_id = request.args.get('id')
     try:
@@ -69,6 +74,7 @@ def get_user():
 
 
 @app.route("/collection/create", methods=["POST"], endpoint='crate_collection')
+@cross_origin()
 def create_collection():
     parameters = request.json
     collection_name = parameters.get('collection_name')
@@ -122,6 +128,7 @@ def create_collection():
 
 
 @app.route("/collections/all/", methods=["GET"], endpoint='collections')
+@cross_origin()
 def get_all_collections():
     limit = request.args.get('limit')
     offset = request.args.get('offset')
@@ -198,6 +205,7 @@ def get_all_collections():
 
 
 @app.route("/collection/save", methods=["POST"], endpoint='save_collection_to_user')
+@cross_origin()
 def save_collection_to_user():
     parameters = request.json
     collection_id = parameters.get('collection_id')
@@ -225,6 +233,7 @@ def save_collection_to_user():
 
 
 @app.route("/nft/save", methods=["POST"], endpoint='add_nft_to_user')
+@cross_origin()
 def save_collection_to_user():
     parameters = request.json
     nft_id = parameters.get('nft_id')
@@ -250,6 +259,7 @@ def save_collection_to_user():
 
 
 @app.route("/collection/", methods=["GET"], endpoint='get_collection_by_id')
+@cross_origin()
 def get_collection_by_id():
     collection_id = request.args.get('collection_id')
     # TODO : Add order by in below query
@@ -322,6 +332,7 @@ def get_collection_by_id():
 
 
 @app.route("/collection/user/", methods=["GET"], endpoint='get_collection_by_user_id')
+@cross_origin()
 def get_collection_by_user_id():
     user_id = request.args.get('id')
     # TODO : Add order by in below query
@@ -394,6 +405,7 @@ def get_collection_by_user_id():
 
 
 @app.route("/collection/saved/", methods=["GET"], endpoint='get_saved_collection')
+@cross_origin()
 def get_collection_by_saved_user_id():
     user_id = request.args.get('user_id')
     # TODO : Add order by in below query
@@ -468,6 +480,7 @@ def get_collection_by_saved_user_id():
 
 
 @app.route("/nft/saved/", methods=["GET"], endpoint='get_saved_nfts')
+@cross_origin()
 def get_nft_by_saved_user_id():
     user_id = request.args.get('user_id')
     # TODO : Add order by in below query
@@ -506,6 +519,7 @@ def get_nft_by_saved_user_id():
 
 
 @app.route("/search/", methods=["GET"], endpoint='search_collections')
+@cross_origin()
 def search_collections():
     limit = request.args.get('limit')
     offset = request.args.get('offset')
@@ -595,6 +609,7 @@ def search_collections():
 
 
 @app.route("/tags/", methods=["GET"], endpoint='get_tags')
+@cross_origin()
 def get_tags():
     limit = request.args.get('limit')
     offset = request.args.get('offset')
@@ -624,6 +639,7 @@ def get_tags():
 
 
 @app.route("/collection/edit/id/", methods=["POST"], endpoint='edit_meta')
+@cross_origin()
 def edit_collection_meta():
     parameters = request.json
     collection_id = parameters.get('collection_id')
