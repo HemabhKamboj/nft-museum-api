@@ -4,8 +4,6 @@
 
 > NFT Museum is a mobile first platform for art lovers to curate their favourite digital art.
 
-This project is deployed live at [https://foamviz.surge.sh](https://foamviz.surge.sh)
-
 ## Table of contents
 - [What is  NFT Museum?](#what)
 - [Why  NFT Museum?](#why)
