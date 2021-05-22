@@ -78,6 +78,7 @@ def get_user():
 @app.route("/collection/create", methods=["POST"], endpoint='crate_collection')
 @cross_origin()
 def create_collection():
+    #this is a function to create collection
     parameters = request.json
     collection_name = parameters.get('collection_name')
     collection_description = parameters.get('collection_description')
