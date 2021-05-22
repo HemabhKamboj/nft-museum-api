@@ -1,5 +1,5 @@
 # NFT Museum API
-===
+
 
 
 > NFT Museum is a mobile first platform for art lovers to curate their favourite digital art.

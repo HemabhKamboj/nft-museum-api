@@ -24,6 +24,7 @@ logger.addHandler(logHandler)
 @app.route("/user/create", methods=["POST"])
 @cross_origin()
 def create_user():
+#something
     parameters = request.json
     user_name = parameters.get('user_name')
     valora_id = parameters.get('valora_id')
